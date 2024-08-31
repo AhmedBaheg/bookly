@@ -1,5 +1,9 @@
+import 'package:bookly/constant.dart';
+import 'package:bookly/features/home/presentation/screen/home_screen.dart';
 import 'package:bookly/features/splash/presentation/screen/widgets/slide_text_animation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import 'scale_image_animation.dart';
 
@@ -21,28 +25,10 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
   void initState() {
     // TODO: implement initState
     super.initState();
-    animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+    initAnimation();
 
-    scaleAnimation = CurvedAnimation(
-        parent: animationController, curve: Curves.easeInOutSine);
+    navigateToHomeScreen();
 
-    // fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-    //   CurvedAnimation(
-    //     parent: animationController,
-    //     curve: Curves.easeIn,
-    //   ),
-    // );
-
-    slideAnimation =
-        Tween<Offset>(begin: const Offset(0, 5), end: Offset.zero).animate(
-      CurvedAnimation(
-        parent: animationController,
-        curve: Curves.easeOut,
-      ),
-    );
-
-    animationController.forward();
     /** if we used below setState will make build for all screen so to improve app performance
      * we used AnimationBuilder to avoid this point and make individual build for each widget   */
     // scaleAnimation.addListener(() {
@@ -70,5 +56,37 @@ class _SplashScreenBodyState extends State<SplashScreenBody>
         ],
       ),
     );
+  }
+
+  void initAnimation() {
+    animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 2));
+
+    scaleAnimation = CurvedAnimation(
+        parent: animationController, curve: Curves.easeInOutSine);
+
+    // fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+    //   CurvedAnimation(
+    //     parent: animationController,
+    //     curve: Curves.easeIn,
+    //   ),
+    // );
+
+    slideAnimation =
+        Tween<Offset>(begin: const Offset(0, 5), end: Offset.zero).animate(
+      CurvedAnimation(
+        parent: animationController,
+        curve: Curves.easeOut,
+      ),
+    );
+
+    animationController.forward();
+  }
+
+  void navigateToHomeScreen() {
+    Future.delayed(const Duration(seconds: 3), () {
+      Get.to(() => const HomeScreen(),
+          transition: Transition.fade, duration: kTransitionDuration);
+    });
   }
 }
