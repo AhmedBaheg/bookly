@@ -6,7 +6,7 @@ class BooksListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.only(right: 16),
       width: MediaQuery.of(context).size.width * .4,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
