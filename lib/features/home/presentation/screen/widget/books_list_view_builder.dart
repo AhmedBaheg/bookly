@@ -13,7 +13,7 @@ class BooksListViewBuilder extends StatelessWidget {
       height: MediaQuery.of(context).size.height * .3,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => const BooksListViewItem(),
+        itemBuilder: (context, index) => BooksListViewItem(),
       ),
     );
   }
