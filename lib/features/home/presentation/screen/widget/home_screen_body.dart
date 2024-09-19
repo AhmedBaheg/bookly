@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'best_seller_list_view_builder.dart';
 import 'best_seller_list_view_item.dart';
 import 'books_list_view_builder.dart';
-import 'books_list_view_item.dart';
+import 'custom_book_image_item.dart';
 
 class HomeScreenBody extends StatelessWidget {
   const HomeScreenBody({super.key});
